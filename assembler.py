@@ -428,14 +428,12 @@ def build_data_labels(data_section):
         elif ".space" in data:
             value = data.split()
             size = int(value[1], 0)
-
-            # nếu muốn fill = 0 thì bật đoạn này
             for i in range(size):
                 DMEM[data_address + i] = 0
 
             data_address += size
 
-        # align 4 byte (giữ nguyên logic của bạn)
+        # align 4 byte
         if data_address % 4 != 0:
             data_address += 4 - (data_address % 4)
 
